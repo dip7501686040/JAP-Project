@@ -1,0 +1,16 @@
+.greetings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem 0;
+}
+.greetings h2{
+    letter-spacing: 4px;
+    color: rgb(12, 82, 12);
+    text-transform: uppercase;
+}
+.greetings p{
+    padding: 0.5rem 2rem;
+    color: rgb(27, 180, 27);
+}
