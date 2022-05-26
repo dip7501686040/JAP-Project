@@ -11,7 +11,7 @@ app.get(
     "/",
     async (req: Request, res: Response): Promise<Response> => {
         return res.status(200).send({
-            message: "Hello World!",
+            message: "Hello World! Hello",
         });
     }
 );
