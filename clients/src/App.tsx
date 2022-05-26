@@ -6,9 +6,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='' element={<div>customer portal, checking a change deploy</div>} />
+        <Route path='' element={<div>
+          customer portal, checking a change deploy
+          its another change
+        </div>} />
         <Route path='admin'>
-          <Route path='' element={<div>admin portal checking a change deploy</div>} />
+          <Route path='' element={<div>
+            admin portal checking a change deploy
+             its another change
+          </div>} />
           <Route path='home' element={<HomeScreen />} />
         </Route>
       </Routes>
