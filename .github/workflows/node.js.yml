@@ -25,8 +25,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: sudo npm i
-    - run: npm run build --if-present
+        cache: 'yarn'
+        cache-dependency-path: './clients/yarn.lock'
+    - run: sudo yarn install --frozen-lockfile
+    - run: sudo yarn run build
     
   start-backend:
     runs-on: self-hosted
@@ -44,6 +46,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: sudo npm i
-    - run: sudo pm2 restart backend
+        cache: 'yarn'
+        cache-dependency-path: './server/yarn.lock'
+    - run: sudo yarn install --frozen-lockfile
+    - run: sudo yarn run build
 
