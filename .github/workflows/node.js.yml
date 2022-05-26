@@ -8,12 +8,12 @@ on:
     branches: [ master ]
 
 jobs:
-  build-frontend:
+  start-backend:
 
     runs-on: self-hosted
     defaults:
       run:
-        working-directory: ./clients
+        working-directory: ./server
     strategy:
       matrix:
         node-version: [18.x]
@@ -25,25 +25,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    
-  start-backend:
-    runs-on: self-hosted
-    defaults:
-      run:
-        working-directory: ./server
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
         cache: 'yarn'
         cache-dependency-path: './server/yarn.lock'
     - run: sudo yarn install --frozen-lockfile
     - run: sudo pm2 restart backend
 
-
+  
