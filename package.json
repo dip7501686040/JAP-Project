@@ -1,0 +1,15 @@
+{
+  "name": "jap-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dip7501686040/JAP-Project.git",
+  "author": "Dipankar Saha <dip7501686040@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "husky": "^8.0.1"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "create-hook": "husky add .husky/pre-push \"cd ./clients && yarn run build\""
+  }
+}
