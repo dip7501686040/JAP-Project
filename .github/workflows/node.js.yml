@@ -29,5 +29,9 @@ jobs:
         cache-dependency-path: './server/yarn.lock'
     - run: sudo yarn install --frozen-lockfile
     - run: sudo pm2 restart backend
+    - run: sudo rm -R /build
+    - run: sudo mv ../clients/build /
+    - run: sudo rm -R ../clients
+    - run: sudo service niginx restart
 
   
