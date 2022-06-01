@@ -1,0 +1,30 @@
+generator client {
+  provider      = "prisma-client-js"
+  engineType    = "binary"
+  binaryTargets = ["native", "darwin", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model products {
+  id       Int     @id @default(autoincrement())
+  code     String? @db.Char(50)
+  name     String? @db.Char(100)
+  unit     String? @db.Char(50)
+  stock    Int     @default(0)
+  deal     Int?
+  free     Int?
+  pur_deal Int?
+  pur_free Int?
+  cost     Float?
+  mrp      Float?
+  pur_rate Float?
+  rate     Float?
+  company  String? @db.Char(100)
+  manufact String? @db.Char(100)
+  rackno   String? @db.Char(100)
+  barcode  String? @db.Char(100)
+}
