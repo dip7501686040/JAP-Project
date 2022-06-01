@@ -25,6 +25,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+        cache-dependency-path: './clients/yarn.lock'
+    - run: sudo yarn install --frozen-lockfile
     - run: sudo chmod -R 777 ../
+    - run: sudo pm2 restart 
 
   
