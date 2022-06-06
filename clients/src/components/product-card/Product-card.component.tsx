@@ -2,25 +2,24 @@ import React from 'react';
 import { Image } from "@chakra-ui/image"
 import { Badge, Box, Center } from "@chakra-ui/layout"
 import { StarIcon } from '@chakra-ui/icons'
+import { productCardProps } from '../../types/product.type';
 
 
-function ProductCard() {
-  const property = {
-    imageUrl: 'https://www.dabur.com/img/product/large/98-Rheumatil-Tablet.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  }
+function ProductCard({product}: productCardProps) {
   return (
-   <Box maxW='sm' width='300px' h='300px' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+    <Box
+      maxW='sm'
+      width='300px'
+      h='300px'
+      borderWidth='1px'
+      borderRadius='lg'
+      overflow='hidden'
+      marginBottom='10px'
+    >
       <Center>
         <Image
-        src={property.imageUrl}
-        alt={property.imageAlt}
+        src='https://www.dabur.com/img/product/large/98-Rheumatil-Tablet.jpg'
+        alt='image'
         h='150px'
       />
       </Center>
@@ -28,7 +27,7 @@ function ProductCard() {
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
           <Badge borderRadius='full' px='2' colorScheme='teal'>
-            New
+            InStock
           </Badge>
           <Box
             color='gray.500'
@@ -38,7 +37,7 @@ function ProductCard() {
             textTransform='uppercase'
             ml='2'
           >
-            {property.beds} beds &bull; {property.baths} baths
+            {product.deal} deals &bull; {product.free} free
           </Box>
         </Box>
 
@@ -49,13 +48,26 @@ function ProductCard() {
           lineHeight='tight'
           noOfLines={1}
         >
-          {property.title}
+          {product.name}
         </Box>
 
         <Box>
-          {property.formattedPrice}
-          <Box as='span' color='gray.600' fontSize='sm'>
-            / wk
+          <Box as='span' fontSize='md'>
+            Rs{'\u00A0'}
+          </Box>
+          <Box
+            as='span'
+            fontSize='md'
+          >
+            {product.rate}{'\u00A0'}
+          </Box>
+          <Box
+            as='span'
+            color='gray.600'
+            fontSize='md'
+            textDecoration='line-through'
+          >
+            {product.mrp}
           </Box>
         </Box>
 
@@ -65,11 +77,11 @@ function ProductCard() {
             .map((_, i) => (
               <StarIcon
                 key={i}
-                color={i < property.rating ? 'teal.500' : 'gray.300'}
+                color={i < 4 ? 'teal.500' : 'gray.300'}
               />
             ))}
           <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-            {property.reviewCount} reviews
+            {50} reviews
           </Box>
         </Box>
       </Box>
